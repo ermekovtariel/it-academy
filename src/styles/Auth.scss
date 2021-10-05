@@ -1,4 +1,3 @@
-/* colors */
 $darkBlue: #217093;
 $medBlue: #4eb8dd;
 $lightBlue: #ddf1fa;
@@ -79,6 +78,7 @@ div {
       margin: 0 0 12px;
       display: block;
       font-size: 1.25em;
+      text-align: left;
       color: #217093;
       font-weight: 700;
       font-family: inherit;
@@ -153,7 +153,6 @@ div {
       }
 
       &.focusWithText .helper {
-        // input[type='email']:focus + .helper {
         transform: translate(1.4em, 2em) scale(0.65);
         opacity: 1;
         // }

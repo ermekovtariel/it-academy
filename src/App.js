@@ -1,24 +1,11 @@
-/* eslint-disable eqeqeq */
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import './App.css';
 import { useRoutes } from './routes';
 
-import { authAction } from './store/actions/auth';
-
 function App() {
-  const dispatch = useDispatch();
+  const json = localStorage.getItem('it-academy');
 
-  useEffect(() => {
-    dispatch(authAction(dispatch));
-  }, [dispatch]);
-
-  // const state = useSelector((state) => state);
-
-  // console.log(state);
-
-  // const routes = useRoutes(state?.auth?.status);
-  const routes = useRoutes(false);
+  const routes = useRoutes(json);
 
   return <div className='App'>{routes}</div>;
 }

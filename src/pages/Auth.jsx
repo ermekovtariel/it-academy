@@ -6,12 +6,17 @@ import { authActionButton } from '../store/actions/auth';
 import { useDispatch } from 'react-redux';
 
 function Auth() {
+  const dispatch = useDispatch();
   const [login, setLogin] = useState();
   const [password, setPassword] = useState();
 
-  const dispatch = useDispatch();
   function logHandler() {
-    dispatch(authActionButton(login, password));
+    dispatch(
+      authActionButton({
+        email: login,
+        password: password,
+      })
+    );
   }
   return (
     <div>
@@ -24,7 +29,6 @@ function Auth() {
             id='email'
             placeholder='email@domain.com'
             className='email'
-            // maxlength='256'
             onChange={(e) => {
               setLogin(e.target.value);
             }}
@@ -32,7 +36,9 @@ function Auth() {
           <span className='indicator'></span>
         </div>
         <div className='inputGroup inputGroup2'>
-          <label htmlFor='password'>Password</label>
+          <label style={{ textAlign: 'left' }} htmlFor='password'>
+            Password
+          </label>
           <input
             type='password'
             id='password'
@@ -50,7 +56,9 @@ function Auth() {
             </button>
           </div>
           <div className='inputGroup inputGroup3'>
-            <button onClick={() => logHandler()}>Log in</button>
+            <button type='submit' onClick={() => logHandler()}>
+              Log in
+            </button>
           </div>
         </div>
       </div>

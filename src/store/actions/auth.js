@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { url } from '../../utils';
+import { Redirect } from 'react-router-dom';
 
 export const authAction = (dispatch) => async () => {
   return await axios
@@ -16,6 +17,7 @@ export const authAction = (dispatch) => async () => {
           type: 'AUTH_SUCCESS',
           payload: true,
         });
+        <Redirect to='/home' />;
         return res.data;
       } catch (error) {
         dispatch({
@@ -29,7 +31,7 @@ export const authAction = (dispatch) => async () => {
 export const authActionButton = (data) => async (dispatch) => {
   return await axios.post(`${url}auth/login`, data).then((res) => {
     try {
-      console.log(res.data.data);
+      localStorage.setItem('it-academy', JSON.stringify(res.data.data.userId));
       dispatch({
         type: 'AUTH',
         payload: res.data,
